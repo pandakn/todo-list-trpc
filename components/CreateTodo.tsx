@@ -21,9 +21,9 @@ function CreateTodo({ submit }: CreateTodoProps) {
         <input
           value={content}
           name="content"
-          className="text-lg sm:text-xl p-2 rounded-xl outline-none"
+          className="text-lg sm:text-xl p-2 rounded-xl outline-none placeholder:text-base"
           type="text"
-          placeholder="type todo..."
+          placeholder="What to do on a nice day?"
           onChange={(e) => setContent(e.target.value)}
         />
         <button
