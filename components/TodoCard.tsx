@@ -13,11 +13,11 @@ const TodoCard = ({ id, content, isDone, handleSetDone }: TodoCardProps) => {
       <input
         checked={isDone}
         type="checkbox"
-        className="h-5 w-5 accent-[#291334] hover:cursor-pointer"
+        className="h-5 w-5 accent-textColor hover:cursor-pointer"
         onChange={() => handleSetDone(id, isDone ? false : true)}
       />
       <p
-        className={`text-lg md:text-2xl text-[#291334] ${
+        className={`text-lg md:text-2xl text-textColor ${
           isDone && "line-through"
         }`}
       >

@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import TRPCProvider from "@/app/_trpc/Provider";
+import { NextAuthProvider } from "@/components/providers/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,8 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#faf7f5]`}>
-        <TRPCProvider>{children}</TRPCProvider>
+      <body className={`${inter.className} bg-bgColor`}>
+        <NextAuthProvider>
+          <TRPCProvider>{children}</TRPCProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );

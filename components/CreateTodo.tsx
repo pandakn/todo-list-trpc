@@ -1,7 +1,6 @@
 "use client";
 
-import { trpc } from "@/app/_trpc/client";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 
 type CreateTodoProps = {
   submit: (content: string) => Promise<void>;
@@ -28,7 +27,7 @@ function CreateTodo({ submit }: CreateTodoProps) {
           onChange={(e) => setContent(e.target.value)}
         />
         <button
-          className="whitespace-nowrap bg-[#291334] rounded-md px-4 py-2 text-white font-bold"
+          className="whitespace-nowrap bg-textColor rounded-md px-4 py-2 text-white font-bold"
           onClick={handleSubmit}
         >
           Add Todo
