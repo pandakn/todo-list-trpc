@@ -9,10 +9,10 @@ export const todoRouter = router({
     const todos = await prisma.todo.findMany({
       where: { userId: ctx.user.id },
     });
-    // const todos = await prisma.todo.findMany();
 
     return todos;
   }),
+
   addTodo: protectProcedure
     .input(z.string())
     .mutation(async ({ input, ctx }) => {
@@ -20,14 +20,23 @@ export const todoRouter = router({
         data: { content: input, userId: ctx.user.id },
       });
     }),
+
   setDone: protectProcedure
     .input(z.object({ id: z.string(), completed: z.boolean() }))
-    .mutation(async (opts) => {
-      const { input } = opts;
+    .mutation(async ({ input }) => {
+      const { id, completed } = input;
 
       await prisma.todo.update({
-        where: { id: input.id },
-        data: { completed: input.completed },
+        where: { id },
+        data: { completed },
       });
+    }),
+
+  deleteTodo: protectProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ input }) => {
+      const { id } = input;
+
+      await prisma.todo.delete({ where: { id } });
     }),
 });
